@@ -2,10 +2,10 @@ const asyncHandler = require("express-async-handler");
 const getContactsController = async (req, res) => {
   res.status(200).json({ message: "Welcome to Server" });
 };
-const getContactController = async (req, res) => {
+const getContactController = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "Indivitual Contactr" });
-};
-const createNewContactsController = async (req, res) => {
+});
+const createNewContactsController = asyncHandler(async (req, res) => {
   console.log(req.body);
   const { name, email, phone } = req.body;
 
@@ -14,13 +14,13 @@ const createNewContactsController = async (req, res) => {
     throw new Error("All Fields are Requiredasync ");
   }
   res.status(201).json({ message: `Created Contacet` });
-};
-const deleteContactsController = async (req, res) => {
+});
+const deleteContactsController = asyncHandler(async (req, res) => {
   res.status(201).json({ message: `Route with ID ${req.params.id}` });
-};
-const updateContactsController = async (req, res) => {
+});
+const updateContactsController = asyncHandler(async (req, res) => {
   res.status(201).json({ message: `Route with ID ${req.params.id}` });
-};
+});
 
 module.exports = {
   getContactsController,
