@@ -37,7 +37,10 @@ const deleteContactsController = asyncHandler(async (req, res) => {
     res.status(404);
     throw Error("Contact Not found ");
   }
-
+  if (contact.user_id.to_string() === req.user.id) {
+    res.status(403);
+    throw new Error("User dont have permission to delete this contacts ");
+  }
   // Delete by ID
   await Contacts.findByIdAndDelete(req.params.id);
 
@@ -51,6 +54,10 @@ const updateContactsController = asyncHandler(async (req, res) => {
     throw Error("Contact Not found ");
   }
 
+  if (contact.user_id.to_string() === req.user.id) {
+    res.status(403);
+    throw new Error("User dont have permission to update this contacts ");
+  }
   const updatedContacts = await Contacts.findByIdAndUpdate(
     req.params.id,
     req.body,
