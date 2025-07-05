@@ -11,5 +11,5 @@ connectDB();
 app.use(express.json());
 app.use("/api/contacts", contactRoute);
 app.use("/api/user", userRoute);
-app.use(errorHandler);
+// app.use(errorHandler);
 app.listen(PORT, () => console.log(`server Running on Port: ${PORT}`));

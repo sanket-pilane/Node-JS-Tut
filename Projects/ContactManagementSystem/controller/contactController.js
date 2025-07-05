@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler");
 const Contacts = require("../models/contactsModel");
 
 const getContactsController = asyncHandler(async (req, res) => {
-  const contacts = await Contacts.find();
+  const contacts = await Contacts.find({ user_id: req.user.id });
   res.status(200).json({ contacts });
 });
 const getContactController = asyncHandler(async (req, res) => {
@@ -26,6 +26,7 @@ const createNewContactsController = asyncHandler(async (req, res) => {
     name,
     email,
     phone,
+    user_id: req.user.id,
   });
   res.status(201).json(contact);
 });
