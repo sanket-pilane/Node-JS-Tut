@@ -20,7 +20,7 @@ const createNewContactsController = asyncHandler(async (req, res) => {
 
   if (!name || !email || !phone) {
     res.status(400);
-    throw new Error("All Fields are Requiredasync ");
+    throw new Error("All Fields are Required ");
   }
   const contact = await Contacts.create({
     name,
@@ -39,7 +39,7 @@ const deleteContactsController = asyncHandler(async (req, res) => {
   }
   if (contact.user_id.to_string() === req.user.id) {
     res.status(403);
-    throw new Error("User dont have permission to delete this contacts ");
+    throw new Error("User don't have permission to delete this contact ");
   }
   // Delete by ID
   await Contacts.findByIdAndDelete(req.params.id);
@@ -56,7 +56,7 @@ const updateContactsController = asyncHandler(async (req, res) => {
 
   if (contact.user_id.to_string() === req.user.id) {
     res.status(403);
-    throw new Error("User dont have permission to update this contacts ");
+    throw new Error("User don't have permission to update this contacts ");
   }
   const updatedContacts = await Contacts.findByIdAndUpdate(
     req.params.id,
