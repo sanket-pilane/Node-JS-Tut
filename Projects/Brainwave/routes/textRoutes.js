@@ -2,7 +2,7 @@ const express = require("express");
 const {
   chatController,
   codeController,
-} = require("../controller/textController");
+} = require("../controller/textControllerGemini");
 const router = express.Router();
 
 router.post("/chat", chatController);

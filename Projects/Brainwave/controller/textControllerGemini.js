@@ -3,7 +3,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 const codePrompt =
-  "Only generate code. Do not include any explanation or comments. Return only the final, accurate code output. No text before or after. Now,";
+  "Only generate code. Do not include any explanation or comments. Return only the final, accurate code output. No text before or after. Now, ";
 
 async function chatController(req, res) {
   try {
