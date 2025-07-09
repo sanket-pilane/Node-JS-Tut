@@ -16,6 +16,7 @@
     "dotenv": "^17.1.0",
     "express": "^5.1.0",
     "nodemon": "^3.1.10",
-    "openai": "^5.8.2"
+    "openai": "^5.8.2",
+    "replicate": "^1.0.1"
   }
 }
