@@ -1,4 +1,5 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
+const chat = require("../model/chat");
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
@@ -14,6 +15,15 @@ async function chatController(req, res) {
     const response = await result.response;
     const text = response.text();
 
+    const newChat = new chat({
+      username: "San",
+      chat: {
+        prompt: prompt,
+        response: text,
+      },
+      model: "Text Gemini ",
+    });
+    await newChat.save();
     res.json({ output: text });
   } catch (error) {
     console.error("Gemini API error:", error);

@@ -3,14 +3,14 @@ const dotenv = require("dotenv").config();
 const mediaRoutes = require("./routes/mediaRoutes");
 const textRoutes = require("./routes/textRoutes");
 const morgan = require("morgan");
+const connectMongo = require("./config/db");
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-
+connectMongo();
 app.use(express.json());
 app.use(morgan("dev"));
-
 app.use("/api/media", mediaRoutes);
 app.use("/api/text", textRoutes);
 
