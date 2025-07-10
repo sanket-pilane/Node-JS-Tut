@@ -4,6 +4,7 @@ const mediaRoutes = require("./routes/mediaRoutes");
 const textRoutes = require("./routes/textRoutes");
 const morgan = require("morgan");
 const connectMongo = require("./config/db");
+const chatHistoryRoutes = require("./routes/chatHistoryRoute");
 
 const PORT = process.env.PORT || 3000;
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use("/api/media", mediaRoutes);
 app.use("/api/text", textRoutes);
+app.use("/api", chatHistoryRoutes);
 
 const requiredEnv = ["GEMINI_API_KEY", "OPENAI_API_KEY", "REPLICATE_API_TOKEN"];
 requiredEnv.forEach((key) => {
