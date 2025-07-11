@@ -53,8 +53,23 @@ const loginController = async (req, res) => {
   }
   res.send("login user");
 };
-const refreshTonesController = (req, res) => {
-  res.send(" refresh Token");
+const refreshTokenController = async (req, res) => {
+  const { token } = req.body;
+
+  if (!token) return res.status(401).json({ message: "No Token Provided" });
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id);
+
+    if (!user) return res.status(401).json({ message: "Invalid Token" });
+
+    const tokens = genereateToken(user); // this returns { accessToken, refreshToken }
+    return res.json(tokens);
+  } catch (err) {
+    console.error("Refresh Error:", err.message);
+    return res.status(403).json({ message: "Token expired or invalid" });
+  }
 };
 const logoutController = (req, res) => {
   res.send(" logout");
@@ -63,6 +78,6 @@ const logoutController = (req, res) => {
 module.exports = {
   registerController,
   loginController,
-  refreshTonesController,
+  refreshTokenController,
   logoutController,
 };
