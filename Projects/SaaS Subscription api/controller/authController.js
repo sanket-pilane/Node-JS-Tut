@@ -51,7 +51,6 @@ const loginController = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: "Login Failed", error: err.message });
   }
-  res.send("login user");
 };
 const refreshTokenController = async (req, res) => {
   const { token } = req.body;
