@@ -3,15 +3,14 @@ const {
   authMiddleware,
   authorizeRoles,
 } = require("../middlewares/auth.middleware");
+const showAllUsersForAdmin = require("../controller/adminController");
 const router = express.Router();
 
 router.get(
   "/dashboard",
   authMiddleware,
   authorizeRoles("admin"),
-  (req, res) => {
-    res.json({ message: "Welcome, Admin!" });
-  }
+  showAllUsersForAdmin
 );
 
 module.exports = router;
