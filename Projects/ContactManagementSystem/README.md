@@ -20,6 +20,42 @@ A simple and secure RESTful API built with **Node.js**, **Express**, and **Mongo
 
 ---
 
+## 🧭 Flow Diagram
+
+```mermaid
+flowchart TD
+    A[User] --> B[POST /api/user/register]
+    B --> C{Valid Input?}
+    C -- Yes --> D[Hash password and save user]
+    C -- No --> E[Return validation error]
+
+    A --> F[POST /api/user/login]
+    F --> G{Credentials valid?}
+    G -- Yes --> H[Issue JWT token]
+    G -- No --> I[Return auth error]
+
+    H --> J[Authenticated request]
+    J --> K[GET /api/contacts]
+    J --> L[POST /api/contacts]
+    J --> M[GET /api/contacts/:id]
+    J --> N[PUT /api/contacts/:id]
+    J --> O[DELETE /api/contacts/:id]
+
+    L --> Q["Save new contact: name, email, phone"]
+    N --> R[Update contact by ID]
+    O --> S[Delete contact by ID]
+
+    subgraph jwt_middleware [JWT Middleware]
+        J
+    end
+
+    subgraph error_handling [Error Handling]
+        E
+        I
+        P[Centralized error handler]
+    end
+```
+
 ## 🗂️ Project Structure
 
 ```
