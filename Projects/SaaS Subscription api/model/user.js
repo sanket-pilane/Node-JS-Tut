@@ -21,7 +21,11 @@ const userSchema = mongoose.Schema(
       default: "free",
     },
     stripeCustomerId: { type: String },
-    subscriptionStatus: { type: String, default: "inactive" },
+    subscriptionStatus: {
+      type: String,
+      enum: ["inactive", "trialing", "active", "past_due", "canceled"],
+      default: "inactive",
+    },
   },
   {
     timestamps: true,
