@@ -37,14 +37,14 @@ const deleteContactsController = asyncHandler(async (req, res) => {
     res.status(404);
     throw Error("Contact Not found ");
   }
-  if (contact.user_id.to_string() === req.user.id) {
+  if (contact.user_id.toString() !== req.user.id) {
     res.status(403);
     throw new Error("User don't have permission to delete this contact ");
   }
   // Delete by ID
   await Contacts.findByIdAndDelete(req.params.id);
 
-  res.status(200).json(contact);
+  res.status(200).json({ message: "Contact deleted successfully", contact });
 });
 
 const updateContactsController = asyncHandler(async (req, res) => {
@@ -54,7 +54,7 @@ const updateContactsController = asyncHandler(async (req, res) => {
     throw Error("Contact Not found ");
   }
 
-  if (contact.user_id.to_string() === req.user.id) {
+  if (contact.user_id.toString() !== req.user.id) {
     res.status(403);
     throw new Error("User don't have permission to update this contacts ");
   }
@@ -63,7 +63,9 @@ const updateContactsController = asyncHandler(async (req, res) => {
     req.body,
     { new: true }
   );
-  res.status(200).json(updatedContacts);
+  res
+    .status(200)
+    .json({ message: "Contact Updated successfully", updatedContacts });
 });
 
 module.exports = {
