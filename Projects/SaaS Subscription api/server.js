@@ -9,4 +9,6 @@ app.use("/api/user", require("./routes/user.route"));
 app.use("/api/admin", require("./routes/admin.route"));
 app.use("/api/premium", require("./routes/premium.route"));
 app.use("/api/auth", require("./routes/auth.route"));
+app.use("/api/stripe", require("./routes/stripe.route"));
+
 app.listen(PORT, () => console.log(`Server Started at Port: ${PORT}`));
