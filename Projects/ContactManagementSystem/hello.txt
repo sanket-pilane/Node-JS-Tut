@@ -1,0 +1,46 @@
+🚀 Just Deployed: Contact Management System - A Fully Secured REST API 🔐
+Built with Node.js, Express, and MongoDB, this project showcases how authentication, authorization, and CRUD operations come together to create a scalable backend system.
+
+📌 What It Does:
+A simple, modular, and production-ready Contact Management System that allows users to securely manage their personal contact data.
+It includes:
+
+🔐 User Registration & Login (passwords hashed with bcrypt)
+
+🗝️ JWT Authentication (access token required for all contact routes)
+
+📒 Full CRUD Operations for contacts (Create, Read, Update, Delete)
+
+🧱 Centralized Error Handling for consistent and clean API responses
+
+🐳 Docker Support for containerized deployment
+
+🛠️ Tech Stack:
+Node.js • Express.js • MongoDB (Mongoose) • JWT • bcrypt • Postman • Docker • Git & GitHub
+
+📂 GitHub + Demo:
+🔗 GitHub: https://github.com/sanket-pilane
+🐳 Docker Image:
+docker pull sanketpilane/contact-management-app:latest
+🎥 Demo Video: Attached (Watch the flow in action — from user auth to contact CRUD)
+
+💡 Why This Project?
+While learning Node.js deeply, I wanted to go beyond boilerplate apps. I built this project to get hands-on with:
+
+🔐 Real-world JWT authentication and session control
+
+🔄 Secure, scoped access to user-specific data
+
+⚙️ Centralized middleware & modular file structure
+
+🚀 Dockerizing backend apps for portability and deployment
+
+🙌 Shoutouts:
+💻 Sneha Kohli - Thank you for contributing to this project and collaborating on core features!
+
+🎓 Aakash Pundhir - Grateful for your amazing mentorship during my Node.js learning journey. Your teaching made this possible!
+
+Let me know your thoughts, feedback, or improvements — I’d love to hear how you'd extend this or use it in your own backend stack!
+Let’s connect and grow together 🚀
+
+#NodeJS #ExpressJS #MongoDB #RESTAPI #JWT #Docker #GitHub #BackendDevelopment #100DaysOfCode #DeveloperJourney #APISecurity #OpenSourceProject #MERN #DockerImage #Postman #JWTAuthentication #ContactApp
